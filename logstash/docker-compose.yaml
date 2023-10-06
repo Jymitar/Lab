@@ -2,7 +2,11 @@ version: '3'
 services:
   logstash:
     image: opensearchproject/logstash-oss-with-opensearch-output-plugin:8.9.0
+    mem_limit: 256m
     container_name: logstash
+    hostname: logstash
+    environment:
+      - LS_HEAP_SIZE=256m
     volumes:
       - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     stdin_open: true

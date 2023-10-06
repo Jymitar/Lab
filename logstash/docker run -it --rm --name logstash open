@@ -1,0 +1,10 @@
+docker run -it --rm --name logstash opensearchproject/logstash-oss-with-opensearch-output-plugin:7.16.2 -e 'input { stdin { } } output {
+   opensearch {
+     hosts => ["https://search-os-stage-01-pps-k2x5amlasehgpy7nboj54fapuu.eu-west-1.es.amazonaws.com:443"]
+     index => "opensearch-logstash-docker-%{+YYYY.MM.dd}"
+     user => "admin"
+     password => "Pp>X99fdLLgOtPGQnjTfmK4zt4iC5Rjj"
+     ssl => true
+     ssl_certificate_verification => false
+   }
+ }'

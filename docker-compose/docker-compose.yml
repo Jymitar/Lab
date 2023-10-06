@@ -1,0 +1,22 @@
+version: '1'
+services:
+  myapp:
+    image: yeasy/simple-web
+    ports:
+      - "8080:80"
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    networks:
+      - toc_network
+  database:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: strongpassword
+    networks:
+      - toc_network
+
+networks:
+  toc_network:
+
